@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bookmark</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <link rel="stylesheet" href="book.css">
+<script src="cont1.js"></script>
+<style type="text/css">
+#valid{
+ position: absolute;
+ top: 82px;
+}
+#valid2{
+ position: absolute;
+ top: 164px;
+}
+.tab{
+  margin-left:660px;
+}
+
+  
+</style>
+</head>
+<body ng-app="app" style="background-image:url(abstract-background-hd-10.jpg);">
+	<h3 style="margin-left: 150px;border-bottom: 1px solid white;margin-right: 150px;color: white" class="animated rubberBand"><marquee><strong style="font-family: cursive;color:yellow;font-size: 30px;">B</strong>ookmarks <span class="tab"> Add Your Favourite <strong>Bookmark.</strong></span></marquee></h2>
+	<div class="container" ng-controller="myApp">
+		<header><button type="button" class="btn btn-info active" style="float: right; margin-top:30px;margin-right: 150px;" data-toggle="modal" data-target="#myModal">Add New</button>
+ 
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="background: yellow">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="color: green">Add content</h4>
+        </div>
+        <div class="modal-body" style="background-image: url(wallpaper2you_444301.jpg);">
+        	<label class="form-group" style="color: white">Website Name:</label>
+          <input type="text" class="form-control" ng-model="books" required name="web" placeholder="Website" >
+          <span ng-show="books.length" style="float: right;font-weight: bold;">{{books.length}}</span>
+          <span style="color: red;margin-top: 0px;" id="valid">{{add}}</span>
+        
+          <label class="form-group" style="margin-top: 15px;color: white">Website Url:</label>
+          <input type="text" class="form-control" ng-model="url" required ng-pattern="/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/" placeholder="Url">
+          
+          <span ng-show="url.length" style="float: right;font-weight: bold;" >{{url.length}}</span>
+           <span style="color: red;margin-top: 0px;" id="valid2">{{add2}}</span>
+
+          <button class="btn btn-success active form-group" ng-click="search()" style="margin-top: 15px;">Save</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</header>
+<ul style="margin-top: 90px; padding-left: 200px;" ng-repeat="x in bookmarks track by $index">
+<li class="well animated zoomIn">
+<p style="font-family: cursive;"><h4 ><a href="{{x.weburl}}" style="color: black;text-decoration: none;font-family: cursive;" target="black"><strong>{{x.name}}</strong></a> </h4>
+<button class="btn btn-danger active"  ng-click="remove(x.name)">Delete</button></p></li></ul>
+	</div>
+
+</body>
+</html>
